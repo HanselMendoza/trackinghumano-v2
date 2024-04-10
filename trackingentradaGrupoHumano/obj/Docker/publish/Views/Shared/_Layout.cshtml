@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Control de entradas</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Gestión de Usuarios", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @if (User.Identity.Name == "kiosko@humano.com.do")
+                    {
+
+                        <li>@Html.ActionLink("Consultar solicitud", "Index", "TBENTRADAskiosko")</li>
+                        <li>@Html.ActionLink("Cerrar sesión", "logout", "Home")</li>
+                    }
+                    @if (User.Identity.IsAuthenticated &&  (User.Identity.Name == "secreatariasvp@humano.com.do"))
+                    {
+
+                        <li>@Html.ActionLink("Crear solicitud", "create", "TBENTRADAs")</li>
+                        <li>@Html.ActionLink("Cerrar sesión", "logout", "Home")</li>
+                    }
+
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Crear Solicitud", "create", "tbentradauser")</li>
+                        <li>@Html.ActionLink("Iniciar Sesión", "Contact", "Home")</li>
+                    }
+
+                    @if (User.Identity.IsAuthenticated && !(User.Identity.Name == "kiosko@humano.com.do") && !(User.Identity.Name == "secreatariasvp@humano.com.do"))
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Gestión de accesos<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Crear solicitud administrador", "create", "tbentradas")</li>
+                                <li>@Html.ActionLink("Listado de Solicitud", "index", "tbentradas")</li>
+                                <li>@Html.ActionLink("Validar Visitante", "index", "TBPERSONAs")</li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Gestión de Usuarios<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Consultar Usuarios", "index", "loginusers")</li>
+                                <li>@Html.ActionLink("Crear Usuario", "Create", "loginusers")</li>
+                            </ul>
+                        </li>
+                        <li>
+                            @Html.ActionLink("Cerrar sesión", "logout", "Home")
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Humano Seguros</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

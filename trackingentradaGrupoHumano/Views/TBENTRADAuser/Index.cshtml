@@ -1,0 +1,16 @@
+﻿@model IEnumerable<trackingentradaGrupoHumano.Models.TBENTRADA>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<h2>SOLICITUD CREADA DE MANERA EXITOSA</h2>
+
+<p>
+    Su solicitud fue creada, el departamento procederá  con la revisión y notificará vía correo
+
+</p>
+
+@Html.ActionLink("Crear nueva solicitud", "Create", null, new { @class = "btn btn-info" })
+

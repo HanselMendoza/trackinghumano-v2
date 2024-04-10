@@ -1,0 +1,79 @@
+﻿@model IEnumerable<trackingentradaGrupoHumano.Models.TBPERSONA>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Consulta de personas</h2>
+
+<p>
+    @Html.ActionLink("Registrar nueva persona", "Create", null, new { @class = "btn btn-info" })
+</p>
+
+<div class="panel panel-default">
+
+    <div class="panel-heading">
+
+  
+
+        <label for="filtro">Filtrar: (Cédula o nombre de la persona visitante)</label>
+        <input type="text" id="filtro" class="form-control">
+        <div class="pull-right">
+            <div class="form-inline">
+                <div class="form-group">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered" id="userTable">
+            <thead>
+                <tr>
+                    <th>Cédula</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Fecha de Infracción</th>
+                    <th>Localidad</th>
+                    <th>Comentarios</th>
+                    <th>Estado</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.CEDULA)</td>
+                        <td>@Html.DisplayFor(modelItem => item.NOMBRES)</td>
+                        <td>@Html.DisplayFor(modelItem => item.APELLIDOS)</td>
+                        <td>@Html.DisplayFor(modelItem => item.FECHANACIMIENTO)</td>
+                        <td>@Html.DisplayFor(modelItem => item.LUGARNACIMIENTO)</td>
+                        <td>@Html.DisplayFor(modelItem => item.PERSONAGRATA)</td>
+                        <td>@Html.DisplayFor(modelItem => item.TBESTADO.NOMBRE)</td>
+                        <td>@Html.ActionLink("Editar", "Edit", new { id = item.IDPERSONA }, new { @class = "btn btn-info" })</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $('#filtro').keyup(function () {
+                var filtro = $(this).val().toLowerCase();
+                $('#userTable tbody tr').hide();
+                $('#userTable tbody tr').each(function () {
+                    var rowCodigo = $(this).find('td:eq(0)').text().toLowerCase();
+                    var rowNombre = $(this).find('td:eq(1)').text().toLowerCase();
+                    if (rowCodigo.includes(filtro) || rowNombre.includes(filtro)) {
+                        $(this).show();
+                    }
+                });
+            });
+        });
+    </script>
+}

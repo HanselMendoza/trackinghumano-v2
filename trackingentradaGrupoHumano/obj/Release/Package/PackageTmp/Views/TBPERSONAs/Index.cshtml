@@ -1,0 +1,79 @@
+﻿@model IEnumerable<trackingentradaGrupoHumano.Models.TBPERSONA>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Consulta de personas</h2>
+
+<p>
+    @Html.ActionLink("Crear nueva solicitud", "Create", null, new { @class = "btn btn-info" })
+</p>
+
+<div class="panel panel-default">
+
+    <div class="panel-heading">Solicitud de entradas</div>
+
+
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead>
+               
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CEDULA)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.NOMBRES)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.APELLIDOS)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.FECHANACIMIENTO)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.LUGARNACIMIENTO)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.PERSONAGRATA)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.TBESTADO.NOMBRE)
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CEDULA)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NOMBRES)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.APELLIDOS)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FECHANACIMIENTO)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.LUGARNACIMIENTO)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PERSONAGRATA)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TBESTADO.NOMBRE)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Editar", "Edit", new { id = item.IDPERSONA }, new { @class = "btn btn-info" }) 
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+        </div>
+    </div>

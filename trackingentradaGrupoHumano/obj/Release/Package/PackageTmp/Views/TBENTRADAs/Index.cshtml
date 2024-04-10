@@ -1,0 +1,84 @@
+﻿@model IEnumerable<trackingentradaGrupoHumano.Models.TBENTRADA>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Solicitud de entradas</h2>
+
+<p>
+    @Html.ActionLink("Crear nueva solicitud", "Create", null, new { @class = "btn btn-info" })
+</p>
+
+<div class="panel panel-default">
+
+    <div class="panel-heading">Solicitud de entradas</div>
+
+
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <!-- Encabezados de la tabla -->
+                    <th>@Html.DisplayNameFor(model => model.CEDULA)</th>
+                    <th>@Html.DisplayNameFor(model => model.NOMBRES)</th>
+                    <th>@Html.DisplayNameFor(model => model.APELLIDOS)</th>
+                    <th>@Html.DisplayNameFor(model => model.FECHAENTRADA)</th>
+                    <th>@Html.DisplayNameFor(model => model.TiempoESTIMADO)</th>
+                    <th>@Html.DisplayNameFor(model => model.codigoempleado)</th>
+                    <th>@Html.DisplayNameFor(model => model.NombreAnfitrion)</th>
+                    <th>@Html.DisplayNameFor(model => model.HORAENTRADA)</th>
+                    <th>@Html.DisplayNameFor(model => model.HORASALIDA)</th>
+                    <th>@Html.DisplayNameFor(model => model.CONFIGURACION.DESCRIPCION)</th>
+                    <th>@Html.DisplayNameFor(model => model.CONFIGURACION1.DESCRIPCION)</th>
+                    <th>@Html.DisplayNameFor(model => model.CONFIGURACION2.DESCRIPCION)</th>
+                    <th>@Html.DisplayNameFor(model => model.TBDEPARTAMENTO.NOMBRE)</th>
+                    <th>@Html.DisplayNameFor(model => model.TBMOTIVOENTRADA.DESCRIPCION)</th>
+                    <th>@Html.DisplayNameFor(model => model.TBOCUPACION.NOMBRE)</th>
+                    <th>@Html.DisplayNameFor(model => model.tblocalidad.descripcion)</th>
+                    <th>@Html.DisplayNameFor(model => model.CONFIGURACION3.DESCRIPCION)</th>
+                    <th>@Html.DisplayNameFor(model => model.TBCOORDENADA.NOMBRE)</th>
+                    <th>@Html.DisplayNameFor(model => model.TBPISO.NOMBRE)</th>
+                    <th>@Html.DisplayNameFor(model => model.estado.descripcion)</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Contenido de la tabla -->
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <!-- Datos de cada fila -->
+                        <td>@Html.DisplayFor(modelItem => item.CEDULA)</td>
+                        <td>@Html.DisplayFor(modelItem => item.NOMBRES)</td>
+                        <td>@Html.DisplayFor(modelItem => item.APELLIDOS)</td>
+                        <td>@Html.DisplayFor(modelItem => item.FECHAENTRADA)</td>
+                        <td>@Html.DisplayFor(modelItem => item.TiempoESTIMADO)</td>
+                        <td>@Html.DisplayFor(modelItem => item.codigoempleado)</td>
+                        <td>@Html.DisplayFor(modelItem => item.NombreAnfitrion)</td>
+                        <td>@Html.DisplayFor(modelItem => item.HORAENTRADA)</td>
+                        <td>@Html.DisplayFor(modelItem => item.HORASALIDA)</td>
+                        <td>@Html.DisplayFor(modelItem => item.CONFIGURACION.DESCRIPCION)</td>
+                        <td>@Html.DisplayFor(modelItem => item.CONFIGURACION1.DESCRIPCION)</td>
+                        <td>@Html.DisplayFor(modelItem => item.CONFIGURACION2.DESCRIPCION)</td>
+                        <td>@Html.DisplayFor(modelItem => item.TBDEPARTAMENTO.NOMBRE)</td>
+                        <td>@Html.DisplayFor(modelItem => item.TBMOTIVOENTRADA.DESCRIPCION)</td>
+                        <td>@Html.DisplayFor(modelItem => item.TBOCUPACION.NOMBRE)</td>
+                        <td>@Html.DisplayFor(modelItem => item.tblocalidad.descripcion)</td>
+                        <td>@Html.DisplayFor(modelItem => item.CONFIGURACION3.DESCRIPCION)</td>
+                        <td>@Html.DisplayFor(modelItem => item.TBCOORDENADA.NOMBRE)</td>
+                        <td>@Html.DisplayFor(modelItem => item.TBPISO.NOMBRE)</td>
+                        <td>@Html.DisplayFor(modelItem => item.estado.descripcion)</td>
+                        <td>
+
+                            @Html.ActionLink("Editar", "Edit", new { id = item.IDENTRADA }, new { @class = "btn btn-info" }) |
+                            <br />
+                            <br />
+                            @Html.ActionLink("Eliminar", "Delete", new { id = item.IDENTRADA }, new { @class = "btn btn-danger" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,113 @@
+﻿@model IEnumerable<trackingentradaGrupoHumano.Models.TBENTRADA>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+    .card {
+        flex: 0 0 calc(33.333% - 20px); /* Tres cartas por línea con espacio entre ellas */
+        margin-bottom: 20px;
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        padding: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+            .card ul li {
+                padding: 5px;
+                border-bottom: 1px solid #eee;
+            }
+
+                .card ul li:last-child {
+                    border-bottom: none;
+                }
+</style>
+
+<h2>Listado de solicitudes</h2>
+
+<p>
+    @Html.ActionLink("Crear nueva solicitud", "Create", null, new { @class = "btn btn-info" })
+</p>
+
+<div class="panel-heading">
+    <div class="panel-heading" style="display: flex; align-items: center;">
+        <label for="filtro" style="margin-right: 10px;">Filtrar solicitud:</label>
+        <input type="text" id="filtro" class="form-control" style="margin-right: 10px;">
+        <div class="pull-right">
+            <div class="form-inline">
+                <div class="form-group">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-container">
+        @foreach (var item in Model)
+        {
+            <div class="card">
+                <ul>
+                    <li style="background-color:deepskyblue">Cédula: @Html.DisplayFor(modelItem => item.CEDULA)</li>
+                    <li>Nombre del visitante: @Html.DisplayFor(modelItem => item.NOMBRES)</li>
+                    <li>Apellidos del visitante: @Html.DisplayFor(modelItem => item.APELLIDOS)</li>
+                    <li>Fecha de Entrada del visitante: @Html.DisplayFor(modelItem => item.FECHAENTRADA)</li>
+                    <li>Tiempo Estimado de la visita: @Html.DisplayFor(modelItem => item.TiempoESTIMADO)</li>
+                    <li>Código del empleado anfitrión: @Html.DisplayFor(modelItem => item.codigoempleado)</li>
+                    <li>Nombre del empleado anfitrión: @Html.DisplayFor(modelItem => item.NombreAnfitrion)</li>
+                    <li>Telefono del anfitrión: @Html.DisplayFor(modelItem => item.telefono_2)</li>
+                    <li>Hora de Entrada del visitante: @Html.DisplayFor(modelItem => item.HORAENTRADA)</li>
+                    <li>Hora de Salida del visitante: @Html.DisplayFor(modelItem => item.HORASALIDA)</li>
+                    <li>¿El visitante accedió?: @Html.DisplayFor(modelItem => item.CONFIGURACION.DESCRIPCION)</li>
+                    <li>¿El visitante tenía Cita previa? @Html.DisplayFor(modelItem => item.CONFIGURACION1.DESCRIPCION)</li>
+
+                    <li>Departamento a visitar: @Html.DisplayFor(modelItem => item.TBDEPARTAMENTO.NOMBRE)</li>
+                    <li>Motivo de Entrada: @Html.DisplayFor(modelItem => item.TBMOTIVOENTRADA.DESCRIPCION)</li>
+                    <li>Ocupación del visitante: @Html.DisplayFor(modelItem => item.TBOCUPACION.NOMBRE)</li>
+                    <li>Localidad a visitar: @Html.DisplayFor(modelItem => item.tblocalidad.descripcion)</li>
+
+                    <li>Piso a visitar: @Html.DisplayFor(modelItem => item.TBPISO.NOMBRE)</li>
+                    <li>Estado de la solicitud: @Html.DisplayFor(modelItem => item.estado.descripcion)</li>
+                    <li>@Html.ActionLink("Editar", "Edit", new { id = item.IDENTRADA }, new { @class = "btn btn-info" })</li>
+                </ul>
+            </div>
+        }
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $('#filtro').keyup(function () {
+                var filtro = $(this).val().toLowerCase();
+                $('.card').each(function () {
+                    var card = $(this);
+                    var matches = card.find('li').filter(function () {
+                        return $(this).text().toLowerCase().indexOf(filtro) > -1;
+                    }).length > 0;
+                    if (matches) {
+                        card.show();
+                    } else {
+                        card.hide();
+                    }
+                });
+            });
+        });
+    </script>
+}

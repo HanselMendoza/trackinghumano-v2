@@ -1,0 +1,29 @@
+﻿# Use official Microsoft ASP.NET Core runtime image as base
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
+WORKDIR /app
+
+# Expose port for the application (typically 80)
+EXPOSE 80
+
+# Use a smaller image for building the application
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+WORKDIR /src
+
+# Copy project file and content to the container
+COPY ["trackingentradaGrupoHumano.csproj", "."]
+
+# Restore dependencies
+RUN dotnet restore "./trackingentradaGrupoHumano.csproj"
+
+# Copy everything to the final image
+COPY . .
+
+# Use the base image as the runtime and set the working directory
+FROM base AS final
+WORKDIR /app
+
+# Copy published application from the build stage
+COPY --from=build /src/bin/Debug/net6.0/publish .
+
+# Entrypoint to run the application
+ENTRYPOINT ["dotnet", "trackingentradaGrupoHumano.dll"]

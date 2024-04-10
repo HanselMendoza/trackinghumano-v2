@@ -1,0 +1,108 @@
+﻿@model IEnumerable<trackingentradaGrupoHumano.Models.TBENTRADA>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+    .card {
+        flex: 0 0 calc(33.333% - 20px); /* Tres cartas por línea con espacio entre ellas */
+        margin-bottom: 20px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+    }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+            .card ul li {
+                padding: 10px;
+                border-bottom: 1px solid #eee;
+            }
+
+                .card ul li:last-child {
+                    border-bottom: none;
+                }
+</style>
+
+<h2>Listado de solicitud</h2>
+
+<p>
+    @Html.ActionLink("Crear nueva solicitud", "Create", null, new { @class = "btn btn-info" })
+</p>
+
+<div class="panel-heading">
+
+    <label for="filtro">Filtrar: (Introducir cualquier valor)</label>
+    <input type="text" id="filtro" class="form-control">
+    <div class="pull-right">
+        <div class="form-inline">
+            <div class="form-group">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card-container">
+    @foreach (var item in Model)
+    {
+        <div class="card">
+            <ul>
+                <li style="background-color:deepskyblue">Cédula: @Html.DisplayFor(modelItem => item.CEDULA)</li>
+                <li>Nombres: @Html.DisplayFor(modelItem => item.NOMBRES)</li>
+                <li>Apellidos: @Html.DisplayFor(modelItem => item.APELLIDOS)</li>
+                <li>Fecha de Entrada: @Html.DisplayFor(modelItem => item.FECHAENTRADA)</li>
+                <li>Tiempo Estimado: @Html.DisplayFor(modelItem => item.TiempoESTIMADO)</li>
+                <li>Código Empleado: @Html.DisplayFor(modelItem => item.codigoempleado)</li>
+                <li>Nombre Anfitrión: @Html.DisplayFor(modelItem => item.NombreAnfitrion)</li>
+                <li>Hora de Entrada: @Html.DisplayFor(modelItem => item.HORAENTRADA)</li>
+                <li>Hora de Salida: @Html.DisplayFor(modelItem => item.HORASALIDA)</li>
+                <li>Configuración 1: @Html.DisplayFor(modelItem => item.CONFIGURACION.DESCRIPCION)</li>
+                <li>Configuración 2: @Html.DisplayFor(modelItem => item.CONFIGURACION1.DESCRIPCION)</li>
+                <li>Configuración 3: @Html.DisplayFor(modelItem => item.CONFIGURACION2.DESCRIPCION)</li>
+                <li>Departamento: @Html.DisplayFor(modelItem => item.TBDEPARTAMENTO.NOMBRE)</li>
+                <li>Motivo de Entrada: @Html.DisplayFor(modelItem => item.TBMOTIVOENTRADA.DESCRIPCION)</li>
+                <li>Ocupación: @Html.DisplayFor(modelItem => item.TBOCUPACION.NOMBRE)</li>
+                <li>Localidad: @Html.DisplayFor(modelItem => item.tblocalidad.descripcion)</li>
+                <li>Configuración 4: @Html.DisplayFor(modelItem => item.CONFIGURACION3.DESCRIPCION)</li>
+                <li>Coordenada: @Html.DisplayFor(modelItem => item.TBCOORDENADA.NOMBRE)</li>
+                <li>Piso: @Html.DisplayFor(modelItem => item.TBPISO.NOMBRE)</li>
+                <li>Estado: @Html.DisplayFor(modelItem => item.estado.descripcion)</li>
+                <li>       @Html.ActionLink("Editar", "Edit", new { id = item.IDENTRADA }, new { @class = "btn btn-info" }) |</li>
+            </ul>
+
+        </div>
+
+    }
+</div>
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $('#filtro').keyup(function () {
+                var filtro = $(this).val().toLowerCase();
+                $('.card').each(function () {
+                    var card = $(this);
+                    var matches = card.find('li').filter(function () {
+                        return $(this).text().toLowerCase().indexOf(filtro) > -1;
+                    }).length > 0;
+                    if (matches) {
+                        card.show();
+                    } else {
+                        card.hide();
+                    }
+                });
+            });
+        });
+    </script>
+}
+

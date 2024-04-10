@@ -1,0 +1,512 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBENTRYTRAKYNGModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CONFIGURACION">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TBENTRADAs" Relationship="Self.FK__TBENTRADA__Entro__2EDAF651" FromRole="CONFIGURACION" ToRole="TBENTRADA" />
+    <NavigationProperty Name="TBENTRADAs1" Relationship="Self.FK__TBENTRADA__TENIA__2DE6D218" FromRole="CONFIGURACION" ToRole="TBENTRADA" />
+    <NavigationProperty Name="TBENTRADAs2" Relationship="Self.FK__TBENTRADA__vpres__30C33EC3" FromRole="CONFIGURACION" ToRole="TBENTRADA" />
+    <NavigationProperty Name="TBENTRADAs3" Relationship="DBENTRYTRAKYNGModel.FK__TBENTRADA__IDOCU__395884C4" FromRole="CONFIGURACION" ToRole="TBENTRADA" />
+  </EntityType>
+  <EntityType Name="loginuser">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="codigoempleado" Type="Int32" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+    <Property Name="contrasena" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TBCOORDENADA">
+    <Key>
+      <PropertyRef Name="IDCOORDENADA" />
+    </Key>
+    <Property Name="IDCOORDENADA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDESTADO" Type="Int32" />
+    <Property Name="IDPISO" Type="Int32" />
+    <Property Name="NOMBRE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="99" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TBESTADO" Relationship="Self.FK__TBCOORDEN__IDEST__29572725" FromRole="TBCOORDENADA" ToRole="TBESTADO" />
+    <NavigationProperty Name="TBPISO" Relationship="Self.FK__TBCOORDEN__IDPIS__2A4B4B5E" FromRole="TBCOORDENADA" ToRole="TBPISO" />
+    <NavigationProperty Name="TBDEPARTAMENTOes" Relationship="Self.FK__TBDEPARTA__IDCOO__2F10007B" FromRole="TBCOORDENADA" ToRole="TBDEPARTAMENTO" />
+    <NavigationProperty Name="TBENTRADAs" Relationship="DBENTRYTRAKYNGModel.FK__TBENTRADA__COORD__3B40CD36" FromRole="TBCOORDENADA" ToRole="TBENTRADA" />
+  </EntityType>
+  <EntityType Name="TBDEPARTAMENTO">
+    <Key>
+      <PropertyRef Name="IDDEPARTM" />
+    </Key>
+    <Property Name="IDDEPARTM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDESTADO" Type="Int32" />
+    <Property Name="IDPISO" Type="Int32" />
+    <Property Name="IDCOORD" Type="Int32" />
+    <Property Name="NOMBRE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="99" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TBCOORDENADA" Relationship="Self.FK__TBDEPARTA__IDCOO__2F10007B" FromRole="TBDEPARTAMENTO" ToRole="TBCOORDENADA" />
+    <NavigationProperty Name="TBESTADO" Relationship="Self.FK__TBDEPARTA__IDEST__2D27B809" FromRole="TBDEPARTAMENTO" ToRole="TBESTADO" />
+    <NavigationProperty Name="TBPISO" Relationship="Self.FK__TBDEPARTA__IDPIS__2E1BDC42" FromRole="TBDEPARTAMENTO" ToRole="TBPISO" />
+    <NavigationProperty Name="TBENTRADAs" Relationship="Self.FK__TBENTRADA__IDDEP__2B0A656D" FromRole="TBDEPARTAMENTO" ToRole="TBENTRADA" />
+  </EntityType>
+  <EntityType Name="TBENTRADA">
+    <Key>
+      <PropertyRef Name="IDENTRADA" />
+    </Key>
+    <Property Name="IDENTRADA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDDEPART" Type="Int32" />
+    <Property Name="IDOCUPACION" Type="Int32" />
+    <Property Name="IDMOTIVOENTRADA" Type="Int32" />
+    <Property Name="CEDULA" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+    <Property Name="NOMBRES" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="APELLIDOS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FECHAENTRADA" Type="DateTime" Precision="0" />
+    <Property Name="TiempoESTIMADO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="TENIACITA" Type="Int32" />
+    <Property Name="Entro" Type="Int32" />
+    <Property Name="Localidad" Type="Int32" />
+    <Property Name="vpresidencial" Type="Int32" />
+    <NavigationProperty Name="CONFIGURACION" Relationship="Self.FK__TBENTRADA__Entro__2EDAF651" FromRole="TBENTRADA" ToRole="CONFIGURACION" />
+    <NavigationProperty Name="CONFIGURACION1" Relationship="Self.FK__TBENTRADA__TENIA__2DE6D218" FromRole="TBENTRADA" ToRole="CONFIGURACION" />
+    <NavigationProperty Name="CONFIGURACION2" Relationship="Self.FK__TBENTRADA__vpres__30C33EC3" FromRole="TBENTRADA" ToRole="CONFIGURACION" />
+    <NavigationProperty Name="TBDEPARTAMENTO" Relationship="Self.FK__TBENTRADA__IDDEP__2B0A656D" FromRole="TBENTRADA" ToRole="TBDEPARTAMENTO" />
+    <NavigationProperty Name="TBMOTIVOENTRADA" Relationship="Self.FK__TBENTRADA__IDMOT__2BFE89A6" FromRole="TBENTRADA" ToRole="TBMOTIVOENTRADA" />
+    <NavigationProperty Name="TBOCUPACION" Relationship="Self.FK__TBENTRADA__IDOCU__2CF2ADDF" FromRole="TBENTRADA" ToRole="TBOCUPACION" />
+    <NavigationProperty Name="tblocalidad" Relationship="Self.FK__TBENTRADA__Local__2FCF1A8A" FromRole="TBENTRADA" ToRole="tblocalidad" />
+    <Property Name="PISO" Type="Int32" />
+    <Property Name="COORDENADA" Type="Int32" />
+    <Property Name="codigoempleado" Type="Int32" />
+    <Property Name="NombreAnfitrion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CONFIGURACION3" Relationship="DBENTRYTRAKYNGModel.FK__TBENTRADA__IDOCU__395884C4" FromRole="TBENTRADA" ToRole="CONFIGURACION" />
+    <NavigationProperty Name="TBCOORDENADA" Relationship="DBENTRYTRAKYNGModel.FK__TBENTRADA__COORD__3B40CD36" FromRole="TBENTRADA" ToRole="TBCOORDENADA" />
+    <NavigationProperty Name="TBPISO" Relationship="DBENTRYTRAKYNGModel.FK__TBENTRADA__PISO__3A4CA8FD" FromRole="TBENTRADA" ToRole="TBPISO" />
+    <Property Name="HORAENTRADA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="HORASALIDA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EstadoSolicitud" Type="Int32" />
+    <NavigationProperty Name="estado" Relationship="DBENTRYTRAKYNGModel.FK__TBENTRADA__Estad__73852659" FromRole="TBENTRADA" ToRole="estado" />
+  </EntityType>
+  <EntityType Name="TBESTADO">
+    <Key>
+      <PropertyRef Name="IDESTADO" />
+    </Key>
+    <Property Name="IDESTADO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TBCOORDENADAs" Relationship="Self.FK__TBCOORDEN__IDEST__29572725" FromRole="TBESTADO" ToRole="TBCOORDENADA" />
+    <NavigationProperty Name="TBDEPARTAMENTOes" Relationship="Self.FK__TBDEPARTA__IDEST__2D27B809" FromRole="TBESTADO" ToRole="TBDEPARTAMENTO" />
+    <NavigationProperty Name="TBMOTIVOENTRADAs" Relationship="Self.FK__TBMOTIVOE__IDEST__34C8D9D1" FromRole="TBESTADO" ToRole="TBMOTIVOENTRADA" />
+    <NavigationProperty Name="TBOCUPACIONs" Relationship="Self.FK__TBOCUPACI__IDEST__31EC6D26" FromRole="TBESTADO" ToRole="TBOCUPACION" />
+    <NavigationProperty Name="TBPERSONAs" Relationship="Self.FK__TBPERSONA__IDEST__45F365D3" FromRole="TBESTADO" ToRole="TBPERSONA" />
+    <NavigationProperty Name="TBPISOes" Relationship="Self.FK__TBPISO__IDESTADO__267ABA7A" FromRole="TBESTADO" ToRole="TBPISO" />
+  </EntityType>
+  <EntityType Name="tblocalidad">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TBENTRADAs" Relationship="Self.FK__TBENTRADA__Local__2FCF1A8A" FromRole="tblocalidad" ToRole="TBENTRADA" />
+  </EntityType>
+  <EntityType Name="TBMOTIVOENTRADA">
+    <Key>
+      <PropertyRef Name="IDMOTIVOENTRADA" />
+    </Key>
+    <Property Name="IDMOTIVOENTRADA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDESTADO" Type="Int32" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="99" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TBENTRADAs" Relationship="Self.FK__TBENTRADA__IDMOT__2BFE89A6" FromRole="TBMOTIVOENTRADA" ToRole="TBENTRADA" />
+    <NavigationProperty Name="TBESTADO" Relationship="Self.FK__TBMOTIVOE__IDEST__34C8D9D1" FromRole="TBMOTIVOENTRADA" ToRole="TBESTADO" />
+  </EntityType>
+  <EntityType Name="TBOCUPACION">
+    <Key>
+      <PropertyRef Name="IDOCUPACION" />
+    </Key>
+    <Property Name="IDOCUPACION" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDESTADO" Type="Int32" />
+    <Property Name="NOMBRE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="99" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TBENTRADAs" Relationship="Self.FK__TBENTRADA__IDOCU__2CF2ADDF" FromRole="TBOCUPACION" ToRole="TBENTRADA" />
+    <NavigationProperty Name="TBESTADO" Relationship="Self.FK__TBOCUPACI__IDEST__31EC6D26" FromRole="TBOCUPACION" ToRole="TBESTADO" />
+  </EntityType>
+  <EntityType Name="TBPERSONA">
+    <Key>
+      <PropertyRef Name="IDPERSONA" />
+    </Key>
+    <Property Name="IDPERSONA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDESTADO" Type="Int32" />
+    <Property Name="CEDULA" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+    <Property Name="NOMBRES" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="APELLIDOS" Type="String" MaxLength="99" FixedLength="false" Unicode="false" />
+    <Property Name="FECHANACIMIENTO" Type="DateTime" Precision="0" />
+    <Property Name="LUGARNACIMIENTO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PERSONAGRATA" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TBESTADO" Relationship="Self.FK__TBPERSONA__IDEST__45F365D3" FromRole="TBPERSONA" ToRole="TBESTADO" />
+  </EntityType>
+  <EntityType Name="TBPISO">
+    <Key>
+      <PropertyRef Name="IDPISO" />
+    </Key>
+    <Property Name="IDPISO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDESTADO" Type="Int32" />
+    <Property Name="NOMBRE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="99" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TBCOORDENADAs" Relationship="Self.FK__TBCOORDEN__IDPIS__2A4B4B5E" FromRole="TBPISO" ToRole="TBCOORDENADA" />
+    <NavigationProperty Name="TBDEPARTAMENTOes" Relationship="Self.FK__TBDEPARTA__IDPIS__2E1BDC42" FromRole="TBPISO" ToRole="TBDEPARTAMENTO" />
+    <NavigationProperty Name="TBESTADO" Relationship="Self.FK__TBPISO__IDESTADO__267ABA7A" FromRole="TBPISO" ToRole="TBESTADO" />
+    <NavigationProperty Name="TBENTRADAs" Relationship="DBENTRYTRAKYNGModel.FK__TBENTRADA__PISO__3A4CA8FD" FromRole="TBPISO" ToRole="TBENTRADA" />
+  </EntityType>
+  <Association Name="FK__TBENTRADA__Entro__2EDAF651">
+    <End Role="CONFIGURACION" Type="Self.CONFIGURACION" Multiplicity="0..1" />
+    <End Role="TBENTRADA" Type="Self.TBENTRADA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CONFIGURACION">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TBENTRADA">
+        <PropertyRef Name="Entro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TBENTRADA__TENIA__2DE6D218">
+    <End Role="CONFIGURACION" Type="Self.CONFIGURACION" Multiplicity="0..1" />
+    <End Role="TBENTRADA" Type="Self.TBENTRADA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CONFIGURACION">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TBENTRADA">
+        <PropertyRef Name="TENIACITA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TBENTRADA__vpres__30C33EC3">
+    <End Role="CONFIGURACION" Type="Self.CONFIGURACION" Multiplicity="0..1" />
+    <End Role="TBENTRADA" Type="Self.TBENTRADA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CONFIGURACION">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TBENTRADA">
+        <PropertyRef Name="vpresidencial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TBCOORDEN__IDEST__29572725">
+    <End Role="TBESTADO" Type="Self.TBESTADO" Multiplicity="0..1" />
+    <End Role="TBCOORDENADA" Type="Self.TBCOORDENADA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBESTADO">
+        <PropertyRef Name="IDESTADO" />
+      </Principal>
+      <Dependent Role="TBCOORDENADA">
+        <PropertyRef Name="IDESTADO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TBCOORDEN__IDPIS__2A4B4B5E">
+    <End Role="TBPISO" Type="Self.TBPISO" Multiplicity="0..1" />
+    <End Role="TBCOORDENADA" Type="Self.TBCOORDENADA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBPISO">
+        <PropertyRef Name="IDPISO" />
+      </Principal>
+      <Dependent Role="TBCOORDENADA">
+        <PropertyRef Name="IDPISO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TBDEPARTA__IDCOO__2F10007B">
+    <End Role="TBCOORDENADA" Type="Self.TBCOORDENADA" Multiplicity="0..1" />
+    <End Role="TBDEPARTAMENTO" Type="Self.TBDEPARTAMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBCOORDENADA">
+        <PropertyRef Name="IDCOORDENADA" />
+      </Principal>
+      <Dependent Role="TBDEPARTAMENTO">
+        <PropertyRef Name="IDCOORD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TBDEPARTA__IDEST__2D27B809">
+    <End Role="TBESTADO" Type="Self.TBESTADO" Multiplicity="0..1" />
+    <End Role="TBDEPARTAMENTO" Type="Self.TBDEPARTAMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBESTADO">
+        <PropertyRef Name="IDESTADO" />
+      </Principal>
+      <Dependent Role="TBDEPARTAMENTO">
+        <PropertyRef Name="IDESTADO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TBDEPARTA__IDPIS__2E1BDC42">
+    <End Role="TBPISO" Type="Self.TBPISO" Multiplicity="0..1" />
+    <End Role="TBDEPARTAMENTO" Type="Self.TBDEPARTAMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBPISO">
+        <PropertyRef Name="IDPISO" />
+      </Principal>
+      <Dependent Role="TBDEPARTAMENTO">
+        <PropertyRef Name="IDPISO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TBENTRADA__IDDEP__2B0A656D">
+    <End Role="TBDEPARTAMENTO" Type="Self.TBDEPARTAMENTO" Multiplicity="0..1" />
+    <End Role="TBENTRADA" Type="Self.TBENTRADA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBDEPARTAMENTO">
+        <PropertyRef Name="IDDEPARTM" />
+      </Principal>
+      <Dependent Role="TBENTRADA">
+        <PropertyRef Name="IDDEPART" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TBENTRADA__IDMOT__2BFE89A6">
+    <End Role="TBMOTIVOENTRADA" Type="Self.TBMOTIVOENTRADA" Multiplicity="0..1" />
+    <End Role="TBENTRADA" Type="Self.TBENTRADA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBMOTIVOENTRADA">
+        <PropertyRef Name="IDMOTIVOENTRADA" />
+      </Principal>
+      <Dependent Role="TBENTRADA">
+        <PropertyRef Name="IDMOTIVOENTRADA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TBENTRADA__IDOCU__2CF2ADDF">
+    <End Role="TBOCUPACION" Type="Self.TBOCUPACION" Multiplicity="0..1" />
+    <End Role="TBENTRADA" Type="Self.TBENTRADA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBOCUPACION">
+        <PropertyRef Name="IDOCUPACION" />
+      </Principal>
+      <Dependent Role="TBENTRADA">
+        <PropertyRef Name="IDOCUPACION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TBENTRADA__Local__2FCF1A8A">
+    <End Role="tblocalidad" Type="Self.tblocalidad" Multiplicity="0..1" />
+    <End Role="TBENTRADA" Type="Self.TBENTRADA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblocalidad">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="TBENTRADA">
+        <PropertyRef Name="Localidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TBMOTIVOE__IDEST__34C8D9D1">
+    <End Role="TBESTADO" Type="Self.TBESTADO" Multiplicity="0..1" />
+    <End Role="TBMOTIVOENTRADA" Type="Self.TBMOTIVOENTRADA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBESTADO">
+        <PropertyRef Name="IDESTADO" />
+      </Principal>
+      <Dependent Role="TBMOTIVOENTRADA">
+        <PropertyRef Name="IDESTADO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TBOCUPACI__IDEST__31EC6D26">
+    <End Role="TBESTADO" Type="Self.TBESTADO" Multiplicity="0..1" />
+    <End Role="TBOCUPACION" Type="Self.TBOCUPACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBESTADO">
+        <PropertyRef Name="IDESTADO" />
+      </Principal>
+      <Dependent Role="TBOCUPACION">
+        <PropertyRef Name="IDESTADO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TBPERSONA__IDEST__45F365D3">
+    <End Role="TBESTADO" Type="Self.TBESTADO" Multiplicity="0..1" />
+    <End Role="TBPERSONA" Type="Self.TBPERSONA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBESTADO">
+        <PropertyRef Name="IDESTADO" />
+      </Principal>
+      <Dependent Role="TBPERSONA">
+        <PropertyRef Name="IDESTADO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TBPISO__IDESTADO__267ABA7A">
+    <End Role="TBESTADO" Type="Self.TBESTADO" Multiplicity="0..1" />
+    <End Role="TBPISO" Type="Self.TBPISO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBESTADO">
+        <PropertyRef Name="IDESTADO" />
+      </Principal>
+      <Dependent Role="TBPISO">
+        <PropertyRef Name="IDESTADO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBENTRYTRAKYNGEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CONFIGURACIONs" EntityType="Self.CONFIGURACION" />
+    <EntitySet Name="loginusers" EntityType="Self.loginuser" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="TBCOORDENADAs" EntityType="Self.TBCOORDENADA" />
+    <EntitySet Name="TBDEPARTAMENTOes" EntityType="Self.TBDEPARTAMENTO" />
+    <EntitySet Name="TBENTRADAs" EntityType="Self.TBENTRADA" />
+    <EntitySet Name="TBESTADOes" EntityType="Self.TBESTADO" />
+    <EntitySet Name="tblocalidads" EntityType="Self.tblocalidad" />
+    <EntitySet Name="TBMOTIVOENTRADAs" EntityType="Self.TBMOTIVOENTRADA" />
+    <EntitySet Name="TBOCUPACIONs" EntityType="Self.TBOCUPACION" />
+    <EntitySet Name="TBPERSONAs" EntityType="Self.TBPERSONA" />
+    <EntitySet Name="TBPISOes" EntityType="Self.TBPISO" />
+    <AssociationSet Name="FK__TBENTRADA__Entro__2EDAF651" Association="Self.FK__TBENTRADA__Entro__2EDAF651">
+      <End Role="CONFIGURACION" EntitySet="CONFIGURACIONs" />
+      <End Role="TBENTRADA" EntitySet="TBENTRADAs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TBENTRADA__TENIA__2DE6D218" Association="Self.FK__TBENTRADA__TENIA__2DE6D218">
+      <End Role="CONFIGURACION" EntitySet="CONFIGURACIONs" />
+      <End Role="TBENTRADA" EntitySet="TBENTRADAs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TBENTRADA__vpres__30C33EC3" Association="Self.FK__TBENTRADA__vpres__30C33EC3">
+      <End Role="CONFIGURACION" EntitySet="CONFIGURACIONs" />
+      <End Role="TBENTRADA" EntitySet="TBENTRADAs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TBCOORDEN__IDEST__29572725" Association="Self.FK__TBCOORDEN__IDEST__29572725">
+      <End Role="TBESTADO" EntitySet="TBESTADOes" />
+      <End Role="TBCOORDENADA" EntitySet="TBCOORDENADAs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TBCOORDEN__IDPIS__2A4B4B5E" Association="Self.FK__TBCOORDEN__IDPIS__2A4B4B5E">
+      <End Role="TBPISO" EntitySet="TBPISOes" />
+      <End Role="TBCOORDENADA" EntitySet="TBCOORDENADAs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TBDEPARTA__IDCOO__2F10007B" Association="Self.FK__TBDEPARTA__IDCOO__2F10007B">
+      <End Role="TBCOORDENADA" EntitySet="TBCOORDENADAs" />
+      <End Role="TBDEPARTAMENTO" EntitySet="TBDEPARTAMENTOes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TBDEPARTA__IDEST__2D27B809" Association="Self.FK__TBDEPARTA__IDEST__2D27B809">
+      <End Role="TBESTADO" EntitySet="TBESTADOes" />
+      <End Role="TBDEPARTAMENTO" EntitySet="TBDEPARTAMENTOes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TBDEPARTA__IDPIS__2E1BDC42" Association="Self.FK__TBDEPARTA__IDPIS__2E1BDC42">
+      <End Role="TBPISO" EntitySet="TBPISOes" />
+      <End Role="TBDEPARTAMENTO" EntitySet="TBDEPARTAMENTOes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TBENTRADA__IDDEP__2B0A656D" Association="Self.FK__TBENTRADA__IDDEP__2B0A656D">
+      <End Role="TBDEPARTAMENTO" EntitySet="TBDEPARTAMENTOes" />
+      <End Role="TBENTRADA" EntitySet="TBENTRADAs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TBENTRADA__IDMOT__2BFE89A6" Association="Self.FK__TBENTRADA__IDMOT__2BFE89A6">
+      <End Role="TBMOTIVOENTRADA" EntitySet="TBMOTIVOENTRADAs" />
+      <End Role="TBENTRADA" EntitySet="TBENTRADAs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TBENTRADA__IDOCU__2CF2ADDF" Association="Self.FK__TBENTRADA__IDOCU__2CF2ADDF">
+      <End Role="TBOCUPACION" EntitySet="TBOCUPACIONs" />
+      <End Role="TBENTRADA" EntitySet="TBENTRADAs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TBENTRADA__Local__2FCF1A8A" Association="Self.FK__TBENTRADA__Local__2FCF1A8A">
+      <End Role="tblocalidad" EntitySet="tblocalidads" />
+      <End Role="TBENTRADA" EntitySet="TBENTRADAs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TBMOTIVOE__IDEST__34C8D9D1" Association="Self.FK__TBMOTIVOE__IDEST__34C8D9D1">
+      <End Role="TBESTADO" EntitySet="TBESTADOes" />
+      <End Role="TBMOTIVOENTRADA" EntitySet="TBMOTIVOENTRADAs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TBOCUPACI__IDEST__31EC6D26" Association="Self.FK__TBOCUPACI__IDEST__31EC6D26">
+      <End Role="TBESTADO" EntitySet="TBESTADOes" />
+      <End Role="TBOCUPACION" EntitySet="TBOCUPACIONs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TBPERSONA__IDEST__45F365D3" Association="Self.FK__TBPERSONA__IDEST__45F365D3">
+      <End Role="TBESTADO" EntitySet="TBESTADOes" />
+      <End Role="TBPERSONA" EntitySet="TBPERSONAs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TBPISO__IDESTADO__267ABA7A" Association="Self.FK__TBPISO__IDESTADO__267ABA7A">
+      <End Role="TBESTADO" EntitySet="TBESTADOes" />
+      <End Role="TBPISO" EntitySet="TBPISOes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TBENTRADA__IDOCU__395884C4" Association="DBENTRYTRAKYNGModel.FK__TBENTRADA__IDOCU__395884C4">
+      <End Role="CONFIGURACION" EntitySet="CONFIGURACIONs" />
+      <End Role="TBENTRADA" EntitySet="TBENTRADAs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TBENTRADA__COORD__3B40CD36" Association="DBENTRYTRAKYNGModel.FK__TBENTRADA__COORD__3B40CD36">
+      <End Role="TBCOORDENADA" EntitySet="TBCOORDENADAs" />
+      <End Role="TBENTRADA" EntitySet="TBENTRADAs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TBENTRADA__PISO__3A4CA8FD" Association="DBENTRYTRAKYNGModel.FK__TBENTRADA__PISO__3A4CA8FD">
+      <End Role="TBPISO" EntitySet="TBPISOes" />
+      <End Role="TBENTRADA" EntitySet="TBENTRADAs" />
+    </AssociationSet>
+    <EntitySet Name="estadoes" EntityType="DBENTRYTRAKYNGModel.estado" />
+    <AssociationSet Name="FK__TBENTRADA__Estad__73852659" Association="DBENTRYTRAKYNGModel.FK__TBENTRADA__Estad__73852659">
+      <End Role="estado" EntitySet="estadoes" />
+      <End Role="TBENTRADA" EntitySet="TBENTRADAs" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="FK__TBENTRADA__IDOCU__395884C4">
+    <End Type="DBENTRYTRAKYNGModel.CONFIGURACION" Role="CONFIGURACION" Multiplicity="0..1" />
+    <End Type="DBENTRYTRAKYNGModel.TBENTRADA" Role="TBENTRADA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CONFIGURACION">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TBENTRADA">
+        <PropertyRef Name="IDOCUPACION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TBENTRADA__COORD__3B40CD36">
+    <End Type="DBENTRYTRAKYNGModel.TBCOORDENADA" Role="TBCOORDENADA" Multiplicity="0..1" />
+    <End Type="DBENTRYTRAKYNGModel.TBENTRADA" Role="TBENTRADA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBCOORDENADA">
+        <PropertyRef Name="IDCOORDENADA" />
+      </Principal>
+      <Dependent Role="TBENTRADA">
+        <PropertyRef Name="COORDENADA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TBENTRADA__PISO__3A4CA8FD">
+    <End Type="DBENTRYTRAKYNGModel.TBPISO" Role="TBPISO" Multiplicity="0..1" />
+    <End Type="DBENTRYTRAKYNGModel.TBENTRADA" Role="TBENTRADA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBPISO">
+        <PropertyRef Name="IDPISO" />
+      </Principal>
+      <Dependent Role="TBENTRADA">
+        <PropertyRef Name="PISO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="estado">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TBENTRADAs" Relationship="DBENTRYTRAKYNGModel.FK__TBENTRADA__Estad__73852659" FromRole="estado" ToRole="TBENTRADA" />
+  </EntityType>
+  <Association Name="FK__TBENTRADA__Estad__73852659">
+    <End Type="DBENTRYTRAKYNGModel.estado" Role="estado" Multiplicity="0..1" />
+    <End Type="DBENTRYTRAKYNGModel.TBENTRADA" Role="TBENTRADA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="estado">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="TBENTRADA">
+        <PropertyRef Name="EstadoSolicitud" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

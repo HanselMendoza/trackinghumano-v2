@@ -1,0 +1,42 @@
+﻿@model IEnumerable<trackingentradaGrupoHumano.Models.TBMOTIVOENTRADA>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Listado</h2>
+
+<p>
+    @Html.ActionLink("Crear nuevo registro", "Create", null, new { @class = "btn btn-info" })
+</p>
+<div class="table-responsive">
+    <table class="table table-striped table-bordered" id="userTable">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DESCRIPCION)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TBESTADO.NOMBRE)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DESCRIPCION)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TBESTADO.NOMBRE)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.IDMOTIVOENTRADA }, new { @class = "btn btn-info" }) |
+
+
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>

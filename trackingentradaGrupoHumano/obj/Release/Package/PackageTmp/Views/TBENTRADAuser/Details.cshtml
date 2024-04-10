@@ -1,0 +1,178 @@
+﻿@model trackingentradaGrupoHumano.Models.TBENTRADA
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TBENTRADA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CEDULA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CEDULA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NOMBRES)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOMBRES)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.APELLIDOS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.APELLIDOS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHAENTRADA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHAENTRADA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TiempoESTIMADO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TiempoESTIMADO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.codigoempleado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codigoempleado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreAnfitrion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreAnfitrion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HORAENTRADA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HORAENTRADA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HORASALIDA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HORASALIDA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CONFIGURACION.DESCRIPCION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CONFIGURACION.DESCRIPCION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CONFIGURACION1.DESCRIPCION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CONFIGURACION1.DESCRIPCION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CONFIGURACION2.DESCRIPCION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CONFIGURACION2.DESCRIPCION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TBDEPARTAMENTO.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TBDEPARTAMENTO.NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TBMOTIVOENTRADA.DESCRIPCION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TBMOTIVOENTRADA.DESCRIPCION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TBOCUPACION.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TBOCUPACION.NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblocalidad.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblocalidad.descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CONFIGURACION3.DESCRIPCION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CONFIGURACION3.DESCRIPCION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TBCOORDENADA.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TBCOORDENADA.NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TBPISO.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TBPISO.NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estado.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado.descripcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDENTRADA }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
