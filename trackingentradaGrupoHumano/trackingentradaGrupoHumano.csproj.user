@@ -21,6 +21,8 @@
     <WebStackScaffolding_DbContextTypeFullName>trackingentradaGrupoHumano.Models.DBENTRYTRAKYNGEntities</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_IsViewGenerationSelected>True</WebStackScaffolding_IsViewGenerationSelected>
     <NameOfLastUsedPublishProfile>registry.hub.docker.com_HANSELmENDOZA1</NameOfLastUsedPublishProfile>
+    <View_SelectedScaffolderID>MvcViewScaffolder</View_SelectedScaffolderID>
+    <View_SelectedScaffolderCategoryPath>root/Common/MVC/View</View_SelectedScaffolderCategoryPath>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>

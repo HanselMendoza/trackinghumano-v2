@@ -11,16 +11,23 @@ namespace trackingentradaGrupoHumano.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class TBPERSONA
     {
         public int IDPERSONA { get; set; }
         public Nullable<int> IDESTADO { get; set; }
+        [DisplayName("Cédula")]
         public string CEDULA { get; set; }
+        [DisplayName("Nombres")]
         public string NOMBRES { get; set; }
+        [DisplayName("Apellidos")]
         public string APELLIDOS { get; set; }
+        [DisplayName("Fecha de infracción")]
         public Nullable<System.DateTime> FECHANACIMIENTO { get; set; }
+        [DisplayName("Localidad")]
         public string LUGARNACIMIENTO { get; set; }
+        [DisplayName("Es una persona grata?")]
         public string PERSONAGRATA { get; set; }
     
         public virtual TBESTADO TBESTADO { get; set; }

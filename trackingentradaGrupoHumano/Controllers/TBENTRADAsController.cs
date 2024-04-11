@@ -18,7 +18,20 @@ namespace trackingentradaGrupoHumano.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            var tBENTRADAs = db.TBENTRADAs.Include(t => t.CONFIGURACION).Include(t => t.CONFIGURACION1).Include(t => t.CONFIGURACION2).Include(t => t.TBDEPARTAMENTO).Include(t => t.TBMOTIVOENTRADA).Include(t => t.TBOCUPACION).Include(t => t.tblocalidad).Include(t => t.CONFIGURACION3).Include(t => t.TBCOORDENADA).Include(t => t.TBPISO).Include(t => t.estado);
+            var tBENTRADAs = db.TBENTRADAs
+       .Include(t => t.CONFIGURACION)
+       .Include(t => t.CONFIGURACION1)
+       .Include(t => t.CONFIGURACION2)
+       .Include(t => t.TBDEPARTAMENTO)
+       .Include(t => t.TBMOTIVOENTRADA)
+       .Include(t => t.TBOCUPACION)
+       .Include(t => t.tblocalidad)
+       .Include(t => t.CONFIGURACION3)
+       .Include(t => t.TBCOORDENADA)
+       .Include(t => t.TBPISO)
+       .Include(t => t.estado)
+       .OrderByDescending(t => t.FECHAENTRADA);
+
             return View(tBENTRADAs.ToList());
         }
 
@@ -67,7 +80,7 @@ namespace trackingentradaGrupoHumano.Controllers
             {
                 db.TBENTRADAs.Add(tBENTRADA);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "TBENTRADAuser");
             }
 
             ViewBag.Entro = new SelectList(db.CONFIGURACIONs, "ID", "DESCRIPCION", tBENTRADA.Entro);

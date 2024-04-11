@@ -83,4 +83,4 @@ C:\Users\Hansel\source\repos\trackingentradaGrupoHumano\trackingentradaGrupoHuma
 C:\Users\Hansel\source\repos\trackingentradaGrupoHumano\trackingentradaGrupoHumano\bin\System.Net.Http.Formatting.xml
 C:\Users\Hansel\source\repos\trackingentradaGrupoHumano\trackingentradaGrupoHumano\bin\System.Web.Http.xml
 C:\Users\Hansel\source\repos\trackingentradaGrupoHumano\trackingentradaGrupoHumano\bin\System.Web.Http.WebHost.xml
-C:\Users\Hansel\source\repos\trackingentradaGrupoHumano\trackingentradaGrupoHumano\obj\Debug\trackingentradaGrupoHumano.csprojAssemblyReference.cache
+C:\Users\Hansel\source\repos\trackingentradaGrupoHumano\trackingentradaGrupoHumano\obj\Debug\trackingentradaGrupoHumano.csproj.AssemblyReference.cache

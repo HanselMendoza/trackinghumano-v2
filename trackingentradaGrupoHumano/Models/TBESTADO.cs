@@ -11,7 +11,8 @@ namespace trackingentradaGrupoHumano.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class TBESTADO
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,8 +25,9 @@ namespace trackingentradaGrupoHumano.Models
             this.TBPERSONAs = new HashSet<TBPERSONA>();
             this.TBPISOes = new HashSet<TBPISO>();
         }
-    
+        [DisplayName("Estado")]
         public int IDESTADO { get; set; }
+        [DisplayName("Estado")]
         public string NOMBRE { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
